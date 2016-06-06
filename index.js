@@ -15,6 +15,7 @@ module.exports = {
     "jasmine": true
   },
   "rules": {
+    "comma-dangle": [1, "only-multiline"],
     "dot-location": [1, "property"],
     "no-empty-character-class": 1,
     "no-underscore-dangle": 0,
