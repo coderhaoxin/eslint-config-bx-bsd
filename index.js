@@ -32,12 +32,12 @@ module.exports = {
     "jsx-quotes": [1, "prefer-single"],
 
     "react/jsx-closing-bracket-location": [1, 'after-props'],
-    "react/no-did-update-set-state": [1, 'allow-in-func'],
     "react/no-did-mount-set-state": [1, 'allow-in-func'],
     "react/jsx-equals-spacing": [1, "never"],
     "react/jsx-curly-spacing": [1, "never"],
     "react/no-direct-mutation-state": 1,
     "react/jsx-space-before-closing": 1,
+    "react/no-did-update-set-state": 1,
     "react/jsx-no-duplicate-props": 1,
     "react/jsx-indent-props": [1, 2],
     "react/no-unknown-property": 1,
