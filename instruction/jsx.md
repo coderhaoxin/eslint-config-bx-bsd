@@ -1,60 +1,72 @@
 
-# jsx 代码规范
+# jsx rules
 
-## 一、 如何给组件传递 props
+## pass props
 
-### 1. 传递 props 的基本方式
+### 1. basic way
 
-```
+```jsx
 <Note {...{dispatch, resume, notes, interviews: resumeInterviews}} />
 ```
 
-优先采用 ES6 中对象属性的简洁表示法，即在对象中只写属性名，不写属性值，此时，属性值等于属性名所代表的变量。
+shorthand for `foo: foo` assignment is better:
 
-反映在 props 中：
-
-```
-// 不推荐
+```jsx
+// not recommended
 <Note a={a} b={b} c={c} />
 <Note {...{a: a, b: b, c: c}} />
 
-// 推荐
+// recommended
 <Note {...{a, b, c}} />
 ```
 
-### 2. props 少于3个时
+### 2. if props < 3
 
-此时用方式1和用传统方式区别不大，可以使用下面的传统写法：
+traditional way is also allowed:
 
-```
+```jsx
 <Note a=b />
 <Note a={b} />
 <Note a={b} c=d />
 ```
 
-### 3. 用前两种方式一行写不下，太长时：
+### 3. if props are too long to write in one line
 
-把 props 保存在一个变量中：
+define props outside jsx:
 
-```
+```jsx
 const props = {xxx}
 <Note {...props} />
 ```
 
-### 4. props 中含有函数时
+### 4. if props contain function
 
-如果函数已经保存在一个变量中，就按照方式1、2、3处理：
+if fn has defined outside jsx:
 
-```
+```jsx
+const fn = v => xxx
+
 <Note a={b} fn={fn} />
 <Note {...{a, b, fn}} />
 ```
 
-如果函数是在传递 props 时才用匿名函数定义，就把函数单独放在外面，以方便区分：
+if not, don't put it together with others：
 
-```
+```jsx
 <Note {...{a, b}} fn={v => xxxx} />
 
 <Note {...{a, b, c, d, e}}
   fn={v => xxxx} />
+```
+
+### 5. if there isn't associated variable for most props
+
+traditional way is better:
+
+```jsx
+// not recommended
+<Note {...{a: 'name', b: true, fn: v => xxx}} />
+
+// recommended
+<Note a='name' b={true} fn={v => xxx} />
 ```
